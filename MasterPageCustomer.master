@@ -1,0 +1,164 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPageCustomer.master.cs" Inherits="MasterPageCustomer" %>
+
+<%@ Register assembly="FlashControl" namespace="Bewise.Web.UI.WebControls" tagprefix="Bewise" %>
+
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <title>Modern Interior Coffee Shop Decoration Myanmar</title>
+    <%--   For Main Page CSS--%>
+     <link rel="stylesheet" type="text/css" href="css/teamOneDesign.css"/>
+     <link rel="stylesheet" type="text/css" href="css/NavGroup.css" />
+    <link rel="shortcut icon" href="images/aaa.jpeg" type="images/jpeg"/>
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+    </head>
+<body class="bodyMain">
+    <form id="form1" runat="server">
+    <div>
+        <table style="width:100%; height: 100%;" class="mainTable">
+            <tr>
+                <td rowspan="5" style="width: 5%">&nbsp;</td>
+                <td style="height: 5%">&nbsp;</td>
+                <td rowspan="5" style="width: 5%">&nbsp;</td>
+            </tr>
+            <tr>
+                <td style="border: thick groove #800000; height: 120px" class="middleTable">
+                    <asp:Image ID="imgTitle" runat="server" ImageUrl="~/images/TitleBar.jpg" CssClass="titleImage" ImageAlign="Middle" />
+                </td>
+            </tr>
+            <tr>
+                <td style="border: thick groove #800000" class="middleTable">
+                    <div class="topnav">
+                        <ul>
+                            <li><asp:LinkButton ID="lnkbtnCustomerHome" runat="server" CssClass="managerLinks" CausesValidation="False" OnClick="lnkbtnCustomerHome_Click">Home</asp:LinkButton></li>
+                            <li><asp:LinkButton ID="lnkbtnUserProfile" runat="server" CssClass="managerLinks" CausesValidation="False" OnClick="lnkbtnUserProfile_Click">Customer Profile</asp:LinkButton></li>
+                            <li><asp:LinkButton ID="lnkbtnView" runat="server" CssClass="managerLinks" CausesValidation="False">Request Order</asp:LinkButton>
+                                <ul>
+                                 <li><asp:LinkButton ID="lnkbtnCreatePackage" runat="server" CausesValidation="False" CssClass="managerLinks" OnClick="lnkbtnCreatePackage_Click">Create Package</asp:LinkButton></li>
+                                 <li><asp:LinkButton ID="lnkbrnReadyPackage" runat="server" CausesValidation="False" CssClass="managerLinks" OnClick="lnkbrnReadyPackage_Click">Provided Package</asp:LinkButton></li>
+                                </ul>
+                             </li>
+                            <li><asp:LinkButton ID="lnkbtnOrderLists" runat="server" CssClass="managerLinks" CausesValidation="False" OnClick="lnkbtnOrderLists_Click">Order Lists</asp:LinkButton></li>
+                            <li><asp:LinkButton ID="lnkbtnHelp" runat="server" CssClass="managerLinks" CausesValidation="False" OnClick="lnkbtnHelp_Click">Contact Us</asp:LinkButton></li>
+                            <li><asp:LinkButton ID="lnkbtnAboutUs" runat="server" CssClass="managerLinks" CausesValidation="False" OnClick="lnkbtnAboutUs_Click">About Us</asp:LinkButton></li>
+                             <li><asp:LinkButton ID="lnkbtnLogout" runat="server" CssClass="managerLinks" CausesValidation="False" OnClick="lnkbtnLogout_Click">Logout</asp:LinkButton></li>
+                         </ul>
+                     </div>
+                    <div class="loginimagediv" ><table style="height: 49px; width: 67px" align="right"><tr>
+                         <td class="auto-style2"><table><tr style="margin-left: 30px"><td> <asp:ImageButton ID="ImageButton1" runat="server" Height="33px" ImageUrl="~/images/Add-To-Cart-Icon.jpg" Width="50px" style="text-align: right" ImageAlign="Right" OnClick="ImageButton1_Click" CausesValidation="False" /><td><div class="cartcycle" ><asp:Label ID="Label1" runat="server" Text="0" CssClass="cartlabel" BorderStyle="None" Width="25px" Height="25px" ></asp:Label>
+                             
+                             <%--<div>--%>
+                             
+                             </div><br />
+                       </td></tr></table>
+                    
+                             </td><td class="auto-style5"><asp:ImageButton ID="btnimage" runat="server" CssClass="managerLinks" CausesValidation="false" Height="37px" ImageUrl="~/images/login.jpg" Width="60px" align="right" ToolTip="Login" OnClick="btnimage_Click"/>
+                       </td></tr></table> </div>
+
+                </td>
+            </tr>
+            <tr>
+                <td style="border: thick groove #800000;height: 650px;" class="middleTable">
+                    <%-- This is for Second Table for content place holder --%>
+                    <table class="secondTable">
+                        <tr>
+                            <td style="height: 5%">&nbsp;</td>
+                            <td style="height: 5%">
+                                &nbsp;</td>
+                            <td style="width: 2%;">&nbsp;</td>
+                            <td colspan="2" style="width: 25%">&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td style="width: 5%">&nbsp;</td>
+                            <td>
+                                 <div class="mainPlaceHolder">
+                                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                                    </asp:ContentPlaceHolder>
+                                </div>
+                            </td>
+                            <td style="width: 2%"></td>
+                            <td style="width: 25%;">
+                            <table style="width:100%;text-align:center;" > 
+                                         <tr>
+                                            <td class="videotable" style="width: 35%">
+                                                <Bewise:FlashControl ID="FlashControl1" runat="server" Height="200px" Loop="True" MovieUrl="~/Video/Slideshow1(1).swf" Width="100%" BgColor="#996633" CssClass="tran"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="videotable" style="width: 35%">
+                                                <Bewise:FlashControl ID="FlashControl2" runat="server" Height="200px"  Width="100%" BgColor="#996633" CssClass="tran"/>
+                                                <br />
+                                                <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT DISTINCT [Status], [VideoUrl] FROM [VTable] WHERE ([Status] = @Status)">
+                                                    <SelectParameters>
+                                                        <asp:SessionParameter Name="Status" SessionField="vv" Type="Int32" />
+                                                    </SelectParameters>
+                                                </asp:SqlDataSource>
+                                            </td>
+                                        </tr>  </table>
+                                <br/><br/><br/><br/><br/><br/><br/><br/>
+                            </td>
+                            <td style="width: 5%">&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td style="height: 5%;">&nbsp;</td>
+                            <td style="height: 5%">
+                                <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" DeleteCommand="DELETE FROM [AddToCarts] " InsertCommand="INSERT INTO [AddToCarts] ([packageID], [itemID], [orderID], [paymentID], [sessionID], [Qty]) VALUES (@packageID, @itemID, @orderID, @paymentID, @sessionID, @Qty)" SelectCommand="SELECT * FROM [AddToCarts]" UpdateCommand="UPDATE [AddToCarts] SET [packageID] = @packageID, [itemID] = @itemID, [orderID] = @orderID, [paymentID] = @paymentID, [sessionID] = @sessionID, [Qty] = @Qty WHERE [Id] = @Id">
+                                    <InsertParameters>
+                                        <asp:Parameter Name="packageID" Type="String" />
+                                        <asp:Parameter Name="itemID" Type="String" />
+                                        <asp:Parameter Name="orderID" Type="String" />
+                                        <asp:Parameter Name="paymentID" Type="String" />
+                                        <asp:Parameter Name="sessionID" Type="String" />
+                                        <asp:Parameter Name="Qty" Type="Int32" />
+                                    </InsertParameters>
+                                    <UpdateParameters>
+                                        <asp:Parameter Name="packageID" Type="String" />
+                                        <asp:Parameter Name="itemID" Type="String" />
+                                        <asp:Parameter Name="orderID" Type="String" />
+                                        <asp:Parameter Name="paymentID" Type="String" />
+                                        <asp:Parameter Name="sessionID" Type="String" />
+                                        <asp:Parameter Name="Qty" Type="Int32" />
+                                        <asp:Parameter Name="Id" Type="Int32" />
+                                    </UpdateParameters>
+                                </asp:SqlDataSource>
+                                <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" DeleteCommand="DELETE FROM PackageTable" InsertCommand="INSERT INTO [PackageTable] ([packageID], [SessionID], [GrandTotal]) VALUES (@packageID, @SessionID, @GrandTotal)" SelectCommand="SELECT * FROM [PackageTable]" UpdateCommand="UPDATE [PackageTable] SET [packageID] = @packageID, [SessionID] = @SessionID, [GrandTotal] = @GrandTotal WHERE [Id] = @Id">
+                                    <DeleteParameters>
+                                        <asp:Parameter Name="Id" Type="Int32" />
+                                    </DeleteParameters>
+                                    <InsertParameters>
+                                        <asp:Parameter Name="packageID" Type="Int32" />
+                                        <asp:Parameter Name="SessionID" Type="String" />
+                                        <asp:Parameter Name="GrandTotal" Type="String" />
+                                    </InsertParameters>
+                                    <UpdateParameters>
+                                        <asp:Parameter Name="packageID" Type="Int32" />
+                                        <asp:Parameter Name="SessionID" Type="String" />
+                                        <asp:Parameter Name="GrandTotal" Type="String" />
+                                        <asp:Parameter Name="Id" Type="Int32" />
+                                    </UpdateParameters>
+                                </asp:SqlDataSource>
+                            </td>
+                            <td style="width: 2%;">&nbsp;</td>
+                            <td style="width: 25%;">&nbsp;</td>
+                            <td style="height: 5%;">&nbsp;</td>
+                        </tr>
+                    </table>
+             
+                        
+                </td>
+            </tr>
+            <tr>
+                <td style="height: 5%">&nbsp;</td>
+            </tr>
+        </table>
+      
+                                 
+      
+    </div>
+           
+    </form>
+</body>
+</html>

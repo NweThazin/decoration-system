@@ -1,0 +1,107 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPageHome.master.cs" Inherits="MasterPageHome" %>
+
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <title>Modern Interior Coffee Shop Decoration Myanmar</title>
+    <%--   For Main Page CSS--%>
+     <link rel="stylesheet" type="text/css" href="css/teamOneDesign.css"/>
+     <link rel="stylesheet" type="text/css" href="css/NavGroup.css" />
+    <link rel="shortcut icon" href="images/aaa.jpeg" type="images/jpeg"/>
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <style type="text/css">
+        .auto-style1 {
+            background-color: #FFFFA4;
+            border-radius: 17px;
+            height: 600px;
+        }
+    </style>
+</head>
+<body class="bodyMain">
+    <form id="form1" runat="server">
+    <div>
+        <table style="width:100%; height: 100%;" class="mainTable">
+            <tr>
+                <td rowspan="5" style="width: 5%">&nbsp;</td>
+                <td style="height: 5%">&nbsp;</td>
+                <td rowspan="5" style="width: 5%">&nbsp;</td>
+            </tr>
+            <tr>
+                <td style="border: thick groove #800000; height: 120px" class="middleTable">
+                    <asp:Image ID="imgTitle" runat="server" ImageUrl="~/images/TitleBar.jpg" CssClass="titleImage" ImageAlign="Middle" />
+                </td>
+            </tr>
+            <tr>
+                <td style="border: thick groove #800000" class="middleTable">
+                    <div class="topnav">
+                      <ul>
+                          <li><asp:LinkButton ID="lnkbtnAdminHome" runat="server" CssClass="managerLinks" CausesValidation="False" OnClick="lnkbtnAdminHome_Click">Home</asp:LinkButton></li>
+                         
+                            <li><asp:LinkButton ID="lnkbtnView" runat="server" CssClass="managerLinks" CausesValidation="False">Request Order</asp:LinkButton>
+                                <ul>
+                                 <li><asp:LinkButton ID="lnkbtnCreatePackage" runat="server" CausesValidation="False" CssClass="managerLinks" OnClick="lnkbtnCreatePackage_Click">Create Package</asp:LinkButton></li>
+                                 <li><asp:LinkButton ID="lnkbrnReadyPackage" runat="server" CausesValidation="False" CssClass="managerLinks" OnClick="lnkbrnReadyPackage_Click">Provided Package</asp:LinkButton></li>
+                                </ul>
+                             </li>
+                          <li><asp:LinkButton ID="lnkbtnLogout" runat="server"  CssClass="managerLinks" CausesValidation="False" OnClick="lnkbtnLogout_Click">Contact Us</asp:LinkButton></li>
+                          <li><asp:LinkButton ID="lnkbtnAboutUs" runat="server" CssClass="managerLinks" CausesValidation="False" OnClick="lnkbtnAboutUs_Click">About Us</asp:LinkButton></li>
+                      </ul>
+                 </div>
+                    <div class="loginimagediv" ><table style="height: 49px; width: 67px" align="right"><tr>
+                         <td class="auto-style2"><table><tr style="margin-left: 30px"><td> <asp:ImageButton ID="ImageButton1" runat="server" Height="33px" ImageUrl="~/images/Add-To-Cart-Icon.jpg" Width="50px" style="text-align: right" ImageAlign="Right" CausesValidation="False" OnClick="ImageButton1_Click"  /><td><div class="cartcycle" ><asp:Label ID="Label1" runat="server" Text="0" CssClass="cartlabel" BorderStyle="None" Width="25px" Height="25px" ></asp:Label>
+                             
+                             <%--<div>--%>
+                             
+                             </div><br />
+                       </td></tr></table>
+                    
+                             </td><td class="auto-style5"><asp:ImageButton ID="btnimage" runat="server" CssClass="managerLinks" CausesValidation="false" Height="37px" ImageUrl="~/images/login.jpg" Width="60px" align="right" ToolTip="Login" OnClick="btnimage_Click"/>
+                       </td></tr></table> </div>
+
+
+                      <%--<div class="loginimagediv" ><asp:ImageButton ID="btnimage" runat="server" CssClass="managerLinks" CausesValidation="false" Height="41px" ImageUrl="~/images/login.jpg" Width="57px" align="right" ToolTip="Login" OnClick="btnimage_Click"/>
+                        </div>--%>
+                </td>
+            </tr>
+            <tr>
+                <td style="border: thick groove #800000" class="auto-style1">
+                    <%-- This is for second table and for content place holder --%>           
+                    <table class="secondTable">
+                                   <tr>
+                                       <td style="width: 5%;">&nbsp;</td>
+                                       <td style="height: 5%">&nbsp;</td>
+                                       <td style="width: 5%;">&nbsp;</td>
+                                   </tr>
+                                   <tr>
+                                       <td style="width: 5%">&nbsp;</td>
+                                       <td><div class="mainPlaceHolder">
+                                           <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+                                             </asp:ContentPlaceHolder>
+
+                                           </div>
+                                       </td>
+                                       <td style="width: 5%">&nbsp;</td>
+                                   </tr>
+                                   <tr>
+                                       <td style="height: 5%;">&nbsp;</td>
+                                       <td style="height: 5%">&nbsp;</td>
+                                       <td style="height: 5%;">&nbsp;</td>
+                                   </tr>
+                               </table>
+                </td>
+            </tr>
+            <tr>
+                <td style="height: 5%">&nbsp;</td>
+            </tr>
+        </table>
+      
+    </div>
+       
+
+    </form>
+</body>
+            
+</html>

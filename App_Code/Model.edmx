@@ -1,0 +1,627 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="CoffeeDBModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="CoffeeDBModelStoreContainer">
+          <EntitySet Name="AddToCarts" EntityType="CoffeeDBModel.Store.AddToCarts" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Admins" EntityType="CoffeeDBModel.Store.Admins" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Banks" EntityType="CoffeeDBModel.Store.Banks" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Customers" EntityType="CoffeeDBModel.Store.Customers" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Items" EntityType="CoffeeDBModel.Store.Items" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Orders" EntityType="CoffeeDBModel.Store.Orders" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="PackageItems" EntityType="CoffeeDBModel.Store.PackageItems" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Packages" EntityType="CoffeeDBModel.Store.Packages" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Payments" EntityType="CoffeeDBModel.Store.Payments" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="PIVirtual" EntityType="CoffeeDBModel.Store.PIVirtual" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ServiceTeams" EntityType="CoffeeDBModel.Store.ServiceTeams" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_CustomerOrder" Association="CoffeeDBModel.Store.FK_CustomerOrder">
+            <End Role="Customers" EntitySet="Customers" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ItemPackageItem" Association="CoffeeDBModel.Store.FK_ItemPackageItem">
+            <End Role="Items" EntitySet="Items" />
+            <End Role="PackageItems" EntitySet="PackageItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderPayment" Association="CoffeeDBModel.Store.FK_OrderPayment">
+            <End Role="Orders" EntitySet="Orders" />
+            <End Role="Payments" EntitySet="Payments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PackageOrder" Association="CoffeeDBModel.Store.FK_PackageOrder">
+            <End Role="Packages" EntitySet="Packages" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PackagePackageItem" Association="CoffeeDBModel.Store.FK_PackagePackageItem">
+            <End Role="Packages" EntitySet="Packages" />
+            <End Role="PackageItems" EntitySet="PackageItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ServiceTeamOrder" Association="CoffeeDBModel.Store.FK_ServiceTeamOrder">
+            <End Role="ServiceTeams" EntitySet="ServiceTeams" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="AddToCarts">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="packageID" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="itemID" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="orderID" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="paymentID" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="sessionID" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Qty" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Admins">
+          <Key>
+            <PropertyRef Name="adminID" />
+          </Key>
+          <Property Name="adminID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="adminName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="adminEmail" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="adminPassword" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Banks">
+          <Key>
+            <PropertyRef Name="bankID" />
+          </Key>
+          <Property Name="bankID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="cardNumber" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="amount" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="bankName" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Customers">
+          <Key>
+            <PropertyRef Name="customerID" />
+          </Key>
+          <Property Name="customerID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="customerName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="customerNRC" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="customerPhone" Type="numeric" Nullable="false" />
+          <Property Name="customerAddress" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="customerEmail" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="customerStatus" Type="int" Nullable="false" />
+          <Property Name="customerPassword" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Items">
+          <Key>
+            <PropertyRef Name="itemID" />
+          </Key>
+          <Property Name="itemID" Type="int" Nullable="false" />
+          <Property Name="itemName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="itemCategory" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="itemImage" Type="image" Nullable="false" />
+          <Property Name="itemQuantity" Type="int" Nullable="false" />
+          <Property Name="itemPrice" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Orders">
+          <Key>
+            <PropertyRef Name="orderID" />
+          </Key>
+          <Property Name="orderID" Type="int" Nullable="false" />
+          <Property Name="orderDate" Type="date" Nullable="false" />
+          <Property Name="orderStatus" Type="int" Nullable="false" />
+          <Property Name="deliveryAddress" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Package_packageID" Type="int" Nullable="false" />
+          <Property Name="Customer_customerID" Type="int" Nullable="false" />
+          <Property Name="ServiceTeam_serviceID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PackageItems">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Package_packageID" Type="int" Nullable="false" />
+          <Property Name="Item_itemID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Packages">
+          <Key>
+            <PropertyRef Name="packageID" />
+          </Key>
+          <Property Name="packageID" Type="int" Nullable="false" />
+          <Property Name="packageName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="packageType" Type="nvarchar(max)" />
+          <Property Name="packageImage" Type="image" />
+          <Property Name="packageStatus" Type="int" Nullable="false" />
+          <Property Name="packageCount" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Payments">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="paymentID" Type="int" Nullable="false" />
+          <Property Name="unitPrice" Type="int" Nullable="false" />
+          <Property Name="amount" Type="numeric" Nullable="false" />
+          <Property Name="totalPrice" Type="numeric" Nullable="false" />
+          <Property Name="itemID" Type="int" Nullable="false" />
+          <Property Name="Order_orderID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PIVirtual">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="packageID" Type="int" />
+          <Property Name="itemID" Type="int" />
+          <Property Name="sessionID" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="ServiceTeams">
+          <Key>
+            <PropertyRef Name="serviceID" />
+          </Key>
+          <Property Name="serviceID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="serviceName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="servicePassword" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="serviceEmail" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_CustomerOrder">
+          <End Role="Customers" Type="CoffeeDBModel.Store.Customers" Multiplicity="1" />
+          <End Role="Orders" Type="CoffeeDBModel.Store.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customers">
+              <PropertyRef Name="customerID" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="Customer_customerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ItemPackageItem">
+          <End Role="Items" Type="CoffeeDBModel.Store.Items" Multiplicity="1" />
+          <End Role="PackageItems" Type="CoffeeDBModel.Store.PackageItems" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Items">
+              <PropertyRef Name="itemID" />
+            </Principal>
+            <Dependent Role="PackageItems">
+              <PropertyRef Name="Item_itemID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderPayment">
+          <End Role="Orders" Type="CoffeeDBModel.Store.Orders" Multiplicity="1" />
+          <End Role="Payments" Type="CoffeeDBModel.Store.Payments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Orders">
+              <PropertyRef Name="orderID" />
+            </Principal>
+            <Dependent Role="Payments">
+              <PropertyRef Name="Order_orderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PackageOrder">
+          <End Role="Packages" Type="CoffeeDBModel.Store.Packages" Multiplicity="1" />
+          <End Role="Orders" Type="CoffeeDBModel.Store.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Packages">
+              <PropertyRef Name="packageID" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="Package_packageID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PackagePackageItem">
+          <End Role="Packages" Type="CoffeeDBModel.Store.Packages" Multiplicity="1" />
+          <End Role="PackageItems" Type="CoffeeDBModel.Store.PackageItems" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Packages">
+              <PropertyRef Name="packageID" />
+            </Principal>
+            <Dependent Role="PackageItems">
+              <PropertyRef Name="Package_packageID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ServiceTeamOrder">
+          <End Role="ServiceTeams" Type="CoffeeDBModel.Store.ServiceTeams" Multiplicity="1" />
+          <End Role="Orders" Type="CoffeeDBModel.Store.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ServiceTeams">
+              <PropertyRef Name="serviceID" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="ServiceTeam_serviceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CoffeeDBModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="CoffeeDBEntities1" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="AddToCarts" EntityType="CoffeeDBModel.AddToCart" />
+          <EntitySet Name="Admins" EntityType="CoffeeDBModel.Admin" />
+          <EntitySet Name="Banks" EntityType="CoffeeDBModel.Bank" />
+          <EntitySet Name="Customers" EntityType="CoffeeDBModel.Customer" />
+          <EntitySet Name="Items" EntityType="CoffeeDBModel.Item" />
+          <EntitySet Name="Orders" EntityType="CoffeeDBModel.Order" />
+          <EntitySet Name="PackageItems" EntityType="CoffeeDBModel.PackageItem" />
+          <EntitySet Name="Packages" EntityType="CoffeeDBModel.Package" />
+          <EntitySet Name="Payments" EntityType="CoffeeDBModel.Payment" />
+          <EntitySet Name="PIVirtuals" EntityType="CoffeeDBModel.PIVirtual" />
+          <EntitySet Name="ServiceTeams" EntityType="CoffeeDBModel.ServiceTeam" />
+          <AssociationSet Name="FK_CustomerOrder" Association="CoffeeDBModel.FK_CustomerOrder">
+            <End Role="Customers" EntitySet="Customers" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ItemPackageItem" Association="CoffeeDBModel.FK_ItemPackageItem">
+            <End Role="Items" EntitySet="Items" />
+            <End Role="PackageItems" EntitySet="PackageItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderPayment" Association="CoffeeDBModel.FK_OrderPayment">
+            <End Role="Orders" EntitySet="Orders" />
+            <End Role="Payments" EntitySet="Payments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PackageOrder" Association="CoffeeDBModel.FK_PackageOrder">
+            <End Role="Packages" EntitySet="Packages" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ServiceTeamOrder" Association="CoffeeDBModel.FK_ServiceTeamOrder">
+            <End Role="ServiceTeams" EntitySet="ServiceTeams" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PackagePackageItem" Association="CoffeeDBModel.FK_PackagePackageItem">
+            <End Role="Packages" EntitySet="Packages" />
+            <End Role="PackageItems" EntitySet="PackageItems" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="AddToCart">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="packageID" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="itemID" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="orderID" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="paymentID" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="sessionID" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Qty" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="adminID" />
+          </Key>
+          <Property Name="adminID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="adminName" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="adminEmail" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="adminPassword" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Bank">
+          <Key>
+            <PropertyRef Name="bankID" />
+          </Key>
+          <Property Name="bankID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="cardNumber" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="amount" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="bankName" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="customerID" />
+          </Key>
+          <Property Name="customerID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="customerName" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="customerNRC" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="customerPhone" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="customerAddress" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="customerEmail" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="customerStatus" Type="Int32" Nullable="false" />
+          <Property Name="customerPassword" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Orders" Relationship="CoffeeDBModel.FK_CustomerOrder" FromRole="Customers" ToRole="Orders" />
+        </EntityType>
+        <EntityType Name="Item">
+          <Key>
+            <PropertyRef Name="itemID" />
+          </Key>
+          <Property Name="itemID" Type="Int32" Nullable="false" />
+          <Property Name="itemName" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="itemCategory" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="itemImage" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+          <Property Name="itemQuantity" Type="Int32" Nullable="false" />
+          <Property Name="itemPrice" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="PackageItems" Relationship="CoffeeDBModel.FK_ItemPackageItem" FromRole="Items" ToRole="PackageItems" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="orderID" />
+          </Key>
+          <Property Name="orderID" Type="Int32" Nullable="false" />
+          <Property Name="orderDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="orderStatus" Type="Int32" Nullable="false" />
+          <Property Name="deliveryAddress" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Package_packageID" Type="Int32" Nullable="false" />
+          <Property Name="Customer_customerID" Type="Int32" Nullable="false" />
+          <Property Name="ServiceTeam_serviceID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Customer" Relationship="CoffeeDBModel.FK_CustomerOrder" FromRole="Orders" ToRole="Customers" />
+          <NavigationProperty Name="Payments" Relationship="CoffeeDBModel.FK_OrderPayment" FromRole="Orders" ToRole="Payments" />
+          <NavigationProperty Name="Package" Relationship="CoffeeDBModel.FK_PackageOrder" FromRole="Orders" ToRole="Packages" />
+          <NavigationProperty Name="ServiceTeam" Relationship="CoffeeDBModel.FK_ServiceTeamOrder" FromRole="Orders" ToRole="ServiceTeams" />
+        </EntityType>
+        <EntityType Name="PackageItem">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Package_packageID" Type="Int32" Nullable="false" />
+          <Property Name="Item_itemID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Item" Relationship="CoffeeDBModel.FK_ItemPackageItem" FromRole="PackageItems" ToRole="Items" />
+          <NavigationProperty Name="Package" Relationship="CoffeeDBModel.FK_PackagePackageItem" FromRole="PackageItems" ToRole="Packages" />
+        </EntityType>
+        <EntityType Name="Package">
+          <Key>
+            <PropertyRef Name="packageID" />
+          </Key>
+          <Property Name="packageID" Type="Int32" Nullable="false" />
+          <Property Name="packageName" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="packageType" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="packageImage" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="packageStatus" Type="Int32" Nullable="false" />
+          <Property Name="packageCount" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Orders" Relationship="CoffeeDBModel.FK_PackageOrder" FromRole="Packages" ToRole="Orders" />
+          <NavigationProperty Name="PackageItems" Relationship="CoffeeDBModel.FK_PackagePackageItem" FromRole="Packages" ToRole="PackageItems" />
+        </EntityType>
+        <EntityType Name="Payment">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="paymentID" Type="Int32" Nullable="false" />
+          <Property Name="unitPrice" Type="Int32" Nullable="false" />
+          <Property Name="amount" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="totalPrice" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="itemID" Type="Int32" Nullable="false" />
+          <Property Name="Order_orderID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Order" Relationship="CoffeeDBModel.FK_OrderPayment" FromRole="Payments" ToRole="Orders" />
+        </EntityType>
+        <EntityType Name="PIVirtual">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="packageID" Type="Int32" />
+          <Property Name="itemID" Type="Int32" />
+          <Property Name="sessionID" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="ServiceTeam">
+          <Key>
+            <PropertyRef Name="serviceID" />
+          </Key>
+          <Property Name="serviceID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="serviceName" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="servicePassword" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="serviceEmail" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Orders" Relationship="CoffeeDBModel.FK_ServiceTeamOrder" FromRole="ServiceTeams" ToRole="Orders" />
+        </EntityType>
+        <Association Name="FK_CustomerOrder">
+          <End Role="Customers" Type="CoffeeDBModel.Customer" Multiplicity="1" />
+          <End Role="Orders" Type="CoffeeDBModel.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customers">
+              <PropertyRef Name="customerID" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="Customer_customerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ItemPackageItem">
+          <End Role="Items" Type="CoffeeDBModel.Item" Multiplicity="1" />
+          <End Role="PackageItems" Type="CoffeeDBModel.PackageItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Items">
+              <PropertyRef Name="itemID" />
+            </Principal>
+            <Dependent Role="PackageItems">
+              <PropertyRef Name="Item_itemID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderPayment">
+          <End Role="Orders" Type="CoffeeDBModel.Order" Multiplicity="1" />
+          <End Role="Payments" Type="CoffeeDBModel.Payment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Orders">
+              <PropertyRef Name="orderID" />
+            </Principal>
+            <Dependent Role="Payments">
+              <PropertyRef Name="Order_orderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PackageOrder">
+          <End Role="Packages" Type="CoffeeDBModel.Package" Multiplicity="1" />
+          <End Role="Orders" Type="CoffeeDBModel.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Packages">
+              <PropertyRef Name="packageID" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="Package_packageID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ServiceTeamOrder">
+          <End Role="ServiceTeams" Type="CoffeeDBModel.ServiceTeam" Multiplicity="1" />
+          <End Role="Orders" Type="CoffeeDBModel.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ServiceTeams">
+              <PropertyRef Name="serviceID" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="ServiceTeam_serviceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PackagePackageItem">
+          <End Role="Packages" Type="CoffeeDBModel.Package" Multiplicity="1" />
+          <End Role="PackageItems" Type="CoffeeDBModel.PackageItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Packages">
+              <PropertyRef Name="packageID" />
+            </Principal>
+            <Dependent Role="PackageItems">
+              <PropertyRef Name="Package_packageID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CoffeeDBModelStoreContainer" CdmEntityContainer="CoffeeDBEntities1">
+          <EntitySetMapping Name="AddToCarts">
+            <EntityTypeMapping TypeName="CoffeeDBModel.AddToCart">
+              <MappingFragment StoreEntitySet="AddToCarts">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="packageID" ColumnName="packageID" />
+                <ScalarProperty Name="itemID" ColumnName="itemID" />
+                <ScalarProperty Name="orderID" ColumnName="orderID" />
+                <ScalarProperty Name="paymentID" ColumnName="paymentID" />
+                <ScalarProperty Name="sessionID" ColumnName="sessionID" />
+                <ScalarProperty Name="Qty" ColumnName="Qty" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Admins">
+            <EntityTypeMapping TypeName="CoffeeDBModel.Admin">
+              <MappingFragment StoreEntitySet="Admins">
+                <ScalarProperty Name="adminID" ColumnName="adminID" />
+                <ScalarProperty Name="adminName" ColumnName="adminName" />
+                <ScalarProperty Name="adminEmail" ColumnName="adminEmail" />
+                <ScalarProperty Name="adminPassword" ColumnName="adminPassword" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Banks">
+            <EntityTypeMapping TypeName="CoffeeDBModel.Bank">
+              <MappingFragment StoreEntitySet="Banks">
+                <ScalarProperty Name="bankID" ColumnName="bankID" />
+                <ScalarProperty Name="cardNumber" ColumnName="cardNumber" />
+                <ScalarProperty Name="amount" ColumnName="amount" />
+                <ScalarProperty Name="bankName" ColumnName="bankName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customers">
+            <EntityTypeMapping TypeName="CoffeeDBModel.Customer">
+              <MappingFragment StoreEntitySet="Customers">
+                <ScalarProperty Name="customerID" ColumnName="customerID" />
+                <ScalarProperty Name="customerName" ColumnName="customerName" />
+                <ScalarProperty Name="customerNRC" ColumnName="customerNRC" />
+                <ScalarProperty Name="customerPhone" ColumnName="customerPhone" />
+                <ScalarProperty Name="customerAddress" ColumnName="customerAddress" />
+                <ScalarProperty Name="customerEmail" ColumnName="customerEmail" />
+                <ScalarProperty Name="customerStatus" ColumnName="customerStatus" />
+                <ScalarProperty Name="customerPassword" ColumnName="customerPassword" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Items">
+            <EntityTypeMapping TypeName="CoffeeDBModel.Item">
+              <MappingFragment StoreEntitySet="Items">
+                <ScalarProperty Name="itemID" ColumnName="itemID" />
+                <ScalarProperty Name="itemName" ColumnName="itemName" />
+                <ScalarProperty Name="itemCategory" ColumnName="itemCategory" />
+                <ScalarProperty Name="itemImage" ColumnName="itemImage" />
+                <ScalarProperty Name="itemQuantity" ColumnName="itemQuantity" />
+                <ScalarProperty Name="itemPrice" ColumnName="itemPrice" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Orders">
+            <EntityTypeMapping TypeName="CoffeeDBModel.Order">
+              <MappingFragment StoreEntitySet="Orders">
+                <ScalarProperty Name="orderID" ColumnName="orderID" />
+                <ScalarProperty Name="orderDate" ColumnName="orderDate" />
+                <ScalarProperty Name="orderStatus" ColumnName="orderStatus" />
+                <ScalarProperty Name="deliveryAddress" ColumnName="deliveryAddress" />
+                <ScalarProperty Name="Package_packageID" ColumnName="Package_packageID" />
+                <ScalarProperty Name="Customer_customerID" ColumnName="Customer_customerID" />
+                <ScalarProperty Name="ServiceTeam_serviceID" ColumnName="ServiceTeam_serviceID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PackageItems">
+            <EntityTypeMapping TypeName="CoffeeDBModel.PackageItem">
+              <MappingFragment StoreEntitySet="PackageItems">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Package_packageID" ColumnName="Package_packageID" />
+                <ScalarProperty Name="Item_itemID" ColumnName="Item_itemID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Packages">
+            <EntityTypeMapping TypeName="CoffeeDBModel.Package">
+              <MappingFragment StoreEntitySet="Packages">
+                <ScalarProperty Name="packageID" ColumnName="packageID" />
+                <ScalarProperty Name="packageName" ColumnName="packageName" />
+                <ScalarProperty Name="packageType" ColumnName="packageType" />
+                <ScalarProperty Name="packageImage" ColumnName="packageImage" />
+                <ScalarProperty Name="packageStatus" ColumnName="packageStatus" />
+                <ScalarProperty Name="packageCount" ColumnName="packageCount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Payments">
+            <EntityTypeMapping TypeName="CoffeeDBModel.Payment">
+              <MappingFragment StoreEntitySet="Payments">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="paymentID" ColumnName="paymentID" />
+                <ScalarProperty Name="unitPrice" ColumnName="unitPrice" />
+                <ScalarProperty Name="amount" ColumnName="amount" />
+                <ScalarProperty Name="totalPrice" ColumnName="totalPrice" />
+                <ScalarProperty Name="itemID" ColumnName="itemID" />
+                <ScalarProperty Name="Order_orderID" ColumnName="Order_orderID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PIVirtuals">
+            <EntityTypeMapping TypeName="CoffeeDBModel.PIVirtual">
+              <MappingFragment StoreEntitySet="PIVirtual">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="packageID" ColumnName="packageID" />
+                <ScalarProperty Name="itemID" ColumnName="itemID" />
+                <ScalarProperty Name="sessionID" ColumnName="sessionID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ServiceTeams">
+            <EntityTypeMapping TypeName="CoffeeDBModel.ServiceTeam">
+              <MappingFragment StoreEntitySet="ServiceTeams">
+                <ScalarProperty Name="serviceID" ColumnName="serviceID" />
+                <ScalarProperty Name="serviceName" ColumnName="serviceName" />
+                <ScalarProperty Name="servicePassword" ColumnName="servicePassword" />
+                <ScalarProperty Name="serviceEmail" ColumnName="serviceEmail" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

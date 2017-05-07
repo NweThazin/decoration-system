@@ -1,0 +1,127 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPageAdmin.master.cs" Inherits="AdminMasterPage" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Modern Interior Coffee Shop Decoration Myanmar</title>
+    <%--   For Main Page CSS--%>
+     <link rel="stylesheet" type="text/css" href="css/teamOneDesign.css" />
+     <link rel="stylesheet" type="text/css" href="css/NavGroup.css"/>
+     <link rel="shortcut icon" href="images/aaa.jpeg" type="images/jpeg"/>
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body class="bodyMain">
+    <form id="form1" runat="server">
+    <div>
+        <table style="width:100%; height: 100%;" class="mainTable">
+            <tr>
+                <td rowspan="5" style="width: 5%">&nbsp;</td>
+                <td style="height: 5%">&nbsp;</td>
+                <td rowspan="5" style="width: 5%">&nbsp;</td>
+            </tr>
+            <tr>
+                <td style="border: thick groove #800000; height: 120px" class="middleTable">
+                    <asp:Image ID="imgTitle" runat="server" ImageUrl="~/images/TitleBar.jpg" CssClass="titleImage" ImageAlign="Middle" />
+                </td>
+            </tr>
+            <tr>
+                <td style="border: thick groove #800000; text-align: center;" class="middleTable">
+                    <div class="topnav">
+                        <ul>
+                           <li><asp:LinkButton ID="lnkbtnAdminHome" runat="server" CssClass="managerLinks" CausesValidation="False" OnClick="lnkbtnAdminHome_Click">Home</asp:LinkButton></li>
+                           <li><asp:LinkButton ID="lnkbtnUpdateProfile" runat="server" CssClass="managerLinks" CausesValidation="False" OnClick="lnkbtnUpdateProfile_Click">Admin Profile</asp:LinkButton></li>
+                            <li><asp:LinkButton ID="lnkbtnManageStock" runat="server" CssClass="managerLinks" CausesValidation="False">Manage Stocks</asp:LinkButton>
+                                <ul>
+                                    <li><asp:LinkButton ID="lnkbtnPackage" runat="server" CssClass="managerLinks" CausesValidation="False" OnClick="lnkbtnPackage_Click">Package</asp:LinkButton></li>
+                                    <li><asp:LinkButton ID="lnkbtnItem" runat="server" CssClass="managerLinks" CausesValidation="False" OnClick="lnkbtnItem_Click">Item</asp:LinkButton></li>
+                                </ul>
+                            </li>
+                            <li><asp:LinkButton ID="lnkbtnAddService" runat="server" CssClass="managerLinks" CausesValidation="False" OnClick="lnkbtnAddService_Click">Service Team</asp:LinkButton></li>
+                            <li><asp:LinkButton ID="lnkbtnViewCust" runat="server" CssClass="managerLinks" CausesValidation="False">Order Info</asp:LinkButton>
+                                <ul>
+                                    <li><asp:LinkButton ID="lnkbtnCustomerOrder" runat="server" CssClass="managerLinks" CausesValidation="False" OnClick="lnkbtnCustomerOrder_Click">Customer Order Lists</asp:LinkButton></li>
+                                    <li><asp:LinkButton ID="lnkbtnCustomerInfo" runat="server" CssClass="managerLinks" CausesValidation="False" OnCommand="lnkbtnCustomerInfo_Command">Customer Information</asp:LinkButton></li>
+                                    <li><asp:LinkButton ID="lnkbtnFinancialReport" runat="server" CssClass="managerLinks" CausesValidation="False" OnClick="lnkbtnFinancialReport_Click">Financial Report</asp:LinkButton></li>
+                                     <li><asp:LinkButton ID="lnkbtnStockReport" runat="server" CssClass="managerLinks" CausesValidation="False" OnClick="lnkbtnStockReport_Click">Package Report</asp:LinkButton></li>
+                                 </ul>
+                            </li>
+                            <li><asp:LinkButton ID="lnkbtnViewReport" runat="server" CssClass="managerLinks" CausesValidation="False" OnClick="lnkbtnViewReport_Click">Add Video</asp:LinkButton></li>
+                            <li><asp:LinkButton ID="lnkbtnLogout" runat="server" CssClass="managerLinks" CausesValidation="False" OnClick="lnkbtnLogout_Click">Logout</asp:LinkButton></li>
+                            
+                          </ul>
+                   </div>
+
+                     <div class="loginimagediv" >
+                         <table style="height: 49px; width: 67px" align="right">
+                             <tr>
+                                 <td><asp:ImageButton ID="imgbtnAlert" runat="server" Height="31px" ImageUrl="~/images/graphics-email-904209.gif" OnClick="imgbtnAlert_Click" Width="55px" CausesValidation="False" /></td>
+                                    
+                                    <td><div class="mailcount"><asp:Label ID="lblCount" runat="server" Height="25px" Width="25px" ForeColor="White"></asp:Label></div><br /></td>
+                                  
+                                 <td><asp:ImageButton ID="imgbtnFinishedAlert" runat="server" ImageUrl="~/images/mail-2-48.gif" OnClick="imgbtnFinishedAlert_Click" CausesValidation="False" /></td>
+
+                             </tr>
+                         </table>
+
+                     </div>
+
+
+
+                    <%--<asp:ImageButton ID="imgbtnAlert" runat="server" Height="31px" ImageUrl="~/images/graphics-email-904209.gif" OnClick="imgbtnAlert_Click" Width="55px" CausesValidation="False" />--%>
+                 <%--  <asp:Label ID="lblCount" runat="server"></asp:Label>--%>
+                     <%--<asp:ImageButton ID="imgbtnFinishedAlert" runat="server" ImageUrl="~/images/mail-2-48.gif" OnClick="imgbtnFinishedAlert_Click" CausesValidation="False" />--%>
+                </td>
+            </tr>
+            <tr>
+                <td style="border: thick groove #800000;height: 650px;" class="middleTable">
+                    <%-- This is for Second Table and Content Place Holder --%>
+                    <table class="secondTable">
+                        <tr>
+                            <td style="height: 5%">&nbsp;</td>
+                            <td style="height: 5%">
+                                <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT * FROM [MessageBox] WHERE ([Status] = @Status)">
+                                    <SelectParameters>
+                                        <asp:Parameter DefaultValue="0" Name="Status" Type="Int32" />
+                                    </SelectParameters>
+                                </asp:SqlDataSource>
+                            </td>
+                            <td style="height: 5%">&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td style="width: 5%">&nbsp;</td>
+                            <td>  
+                                <div class="mainPlaceHolder">
+                                    <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+                                        </asp:ContentPlaceHolder>
+                            </div>
+                        </td>
+                            <td style="width: 5%">&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td style="height: 5%">&nbsp;</td>
+                            <td style="height: 5%">
+                                <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT COUNT(*) AS Expr1 FROM MessageBox WHERE (Status = @status)">
+                                    <SelectParameters>
+                                        <asp:Parameter DefaultValue="0" Name="status" />
+                                    </SelectParameters>
+                                </asp:SqlDataSource>
+                            </td>
+                            <td style="height: 5%">&nbsp;</td>
+                        </tr>
+                    </table>
+                    
+                </td>
+            </tr>
+            <tr>
+                <td style="height: 5%">&nbsp;</td>
+            </tr>
+        </table>
+      
+    </div>
+
+    </form>
+     
+</body>
+</html>

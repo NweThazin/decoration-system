@@ -1,0 +1,88 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPageServiceTeam.master.cs" Inherits="MasterPageServiceTeam" %>
+
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <title>Modern Interior Coffee Shop Decoration Myanmar</title>
+    <%--   For Main Page CSS--%>
+     <link rel="stylesheet" type="text/css" href="css/teamOneDesign.css"/>
+     <link rel="stylesheet" type="text/css" href="css/NavGroup.css" />
+    <link rel="shortcut icon" href="images/aaa.jpeg" type="images/jpeg"/>
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <style type="text/css">
+        .auto-style1 {
+            width: 5%;
+            height: 23px;
+        }
+        .auto-style2 {
+            height: 23px;
+        }
+    </style>
+</head>
+<body class="bodyMain">
+    <form id="form1" runat="server">
+    <div>
+        <table style="width:100%; height: 100%;" class="mainTable">
+            <tr>
+                <td rowspan="5" style="width: 5%">&nbsp;</td>
+                <td style="height: 5%">&nbsp;</td>
+                <td rowspan="5" style="width: 5%">&nbsp;</td>
+            </tr>
+            <tr>
+                <td style="border: thick groove #800000; height: 120px" class="middleTable">
+                    <asp:Image ID="imgTitle" runat="server" ImageUrl="~/images/TitleBar.jpg" CssClass="titleImage" ImageAlign="Middle" />
+                </td>
+            </tr>
+            <tr>
+                <td style="border: thick groove #800000" class="middleTable">
+                     <div class="topnav">
+                      <ul>
+                          <li><asp:LinkButton ID="lnkbtnServiceTeamHome" runat="server" CssClass="managerLinks" CausesValidation="False" OnClick="lnkbtnServiceTeamHome_Click">Home</asp:LinkButton></li>
+                          <li><asp:LinkButton ID="lnkbtnProfile" runat="server" CssClass="managerLinks" CausesValidation="False" OnClick="lnkbtnProfile_Click">Service Team Profile</asp:LinkButton></li>
+                          <li><asp:LinkButton ID="lnkbtnLogout" runat="server"  CssClass="managerLinks" CausesValidation="False" OnClick="lnkbtnLogout_Click">Logout</asp:LinkButton></li>
+                      </ul>
+                 </div>
+                </td>
+            </tr>
+            <tr>
+                <td style="border: thick groove #800000;height: 600px;" class="middleTable">
+                    <%-- This is for Second Table and For Content Place Holder --%>           
+                    <table class="secondTable">
+                                   <tr>
+                                       <td class="auto-style1" style="height: 5%"></td>
+                                       <td class="auto-style2" style="height: 5%"></td>
+                                       <td class="auto-style2" style="height: 5%;"></td>
+                                   </tr>
+                                   <tr>
+                                       <td style="width: 5%">&nbsp;</td>
+                                       <td><div class="mainPlaceHolder">
+                                            <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+                                             
+                                            </asp:ContentPlaceHolder>
+                                            </div>
+                                       </td>
+                                       <td style="width: 5%">&nbsp;</td>
+                                   </tr>
+                                   <tr>
+                                       <td style="height: 5%;">&nbsp;</td>
+                                       <td style="height: 5%">&nbsp;</td>
+                                       <td style="height: 5%;">&nbsp;</td>
+                                   </tr>
+                               </table>
+
+                            
+                    
+                </td>
+            </tr>
+            <tr>
+                <td style="height: 5%">&nbsp;</td>
+            </tr>
+        </table>
+    </div>
+
+    </form>
+</body>
+</html>
